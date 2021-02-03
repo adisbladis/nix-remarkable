@@ -15,7 +15,7 @@ in
   # used to be.
   makeFlags = oA.makeFlags or [] ++ [
     "CC=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}cc"
-    "ARCH=${stdenv.hostPlatform.platform.kernelArch}"
+    "ARCH=${stdenv.hostPlatform.linuxArch}"
   ] ++ stdenv.lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) [
     "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
   ];
