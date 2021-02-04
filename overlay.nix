@@ -17,6 +17,8 @@ self: super: {
     cmakeFlags = [ "-DWITH_PNG=OFF" ];
   }));
 
+  remarkable2-framebuffer = self.libsForQt5.callPackage ./pkgs/remarkable2-framebuffer { };
+
   # TODO: Repackage
   # linuxPackages_remarkable = super.linuxPackages_remarkable.extend
   #   (selflp: superlp: {
