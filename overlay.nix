@@ -1,12 +1,15 @@
 self: super: {
 
-  linux_remarkable = self.callPackage ./pkgs/linux-remarkable/kernel.nix {
+  linux_remarkable = self.callPackage ./pkgs/kernel/rm1/kernel.nix {
+    kernelPatches = [ ];
+  };
+  linux_remarkable2 = self.callPackage ./pkgs/kernel/rm2/kernel.nix {
     kernelPatches = [ ];
   };
   linuxPackages_remarkable = self.linuxPackagesFor self.linux_remarkable;
   linuxPackages = self.linuxPackages_remarkable;
   linux = self.linuxPackages.kernel;
-  linuxHeaders = self.callPackage ./pkgs/linux-remarkable/headers.nix { };
+  # linuxHeaders = self.callPackage ./pkgs/linux-remarkable/headers.nix { };
 
   libvncserver = (super.libvncserver.overrideAttrs (oA: {
     # Remove unnecessary dependencies
